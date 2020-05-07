@@ -7,14 +7,14 @@ You can place the script anywhere or even set it as a scheduled task
 
 path = r"S:\repoTools"
 if not os.path.exists(path):
-    raise Exception("Path not found!!.Clonaste el repositorio???")
+    raise Exception("Error de ruta!!.Clonaste el repositorio???")
 os.chdir(path)
-
 
 def updateRepo():
     try:
         cmd = "git pull"
-        process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE, universal_newlines=True)
         out, err = process.communicate()
         if err:
             raise Exception(err)
