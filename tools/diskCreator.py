@@ -18,7 +18,10 @@ def createDisk():
 							stderr=subprocess.PIPE, universal_newlines=True)
 		out, err = process.communicate()
 		if out:
-			print "disk already exists!!"
+			if 'SUBST' in str(out):
+				print "disk already exists!!"
+			else:
+				raise Exception(out)
 		elif err:
 			raise Exception(err)
 		else:
